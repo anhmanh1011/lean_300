@@ -1,17 +1,43 @@
 package com.company;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
 
-    public static void main(String[] args) {
-        ListNode list1 = new ListNode(1, new ListNode(2, new ListNode(3)));
-        ListNode list2 = new ListNode(1, new ListNode(2, new ListNode(3)));
-
-        ListNode listNode = mergeTwoLists(list1, list2);
-        while (listNode.next != null) {
-            System.out.println(listNode.val);
-            listNode = listNode.next;
-        }
+    interface Foo {
+        int x = 10;
     }
+
+
+    public static void main(String[] args) {
+        Integer[] a = new Integer[]{3,1,2,3};
+        List<Integer> integers = Arrays.asList(a);
+        System.out.println(functionExample(integers));
+    }
+
+    public static boolean functionExample(List<Integer> numbers) {
+        int min = Integer.MAX_VALUE;
+        int max = numbers.get(0);
+        int index = numbers.get(0);
+        for (int i = 1; i < numbers.size(); i++) {
+            if (index > numbers.get(i)) {
+                if (min < numbers.get(i))
+                    return false;
+                min = numbers.get(i);
+
+            }
+            else {
+                if (max < numbers.get(i))
+                    max = numbers.get(i);
+                else return false;
+            }
+            index = numbers.get(i);
+
+        }
+        return true;
+    }
+
 
     public static ListNode mergeTwoLists(ListNode list1, ListNode list2) {
 
